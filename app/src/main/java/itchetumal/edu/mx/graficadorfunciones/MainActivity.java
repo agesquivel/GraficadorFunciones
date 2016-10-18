@@ -81,34 +81,42 @@ public class MainActivity extends AppCompatActivity {
             float centroY = limites.exactCenterY();
 
             //Rotar texto a 90 grados
-            /*
+
             String textY = "EjeY";
 
             Rect limTxtY = new Rect();
             pincel1.getTextBounds(textY, 0, textY.length(), limTxtY);
 
-            canvas.rotate(-90, ancho/2, alto/2);
+            canvas.save();
+            canvas.rotate(-45, centroX, centroY);
+
+            canvas.drawText("Origen canvas girado", centroX, centroY, pincel1);
 
             int anchoRot = canvas.getHeight();
             int altoRot = canvas.getWidth();
 
-            canvas.drawText("Origen canvas rotado", anchoRot, altoRot, pincel1);
+            /*canvas.drawText("Origen canvas rotado", anchoRot, altoRot, pincel1);
 
             canvas.drawText("Eje Y", altoRot/2, anchoRot/2, pincel1);
-            //canvas.restore();
+            */
 
-            canvas.rotate(90, ancho/2, alto/2);
+            canvas.rotate(-45, centroX, centroY);
+            canvas.translate(centroX, centroY);
+            canvas.drawText("Texto 45º", 0, 0, pincel1);
+
+            canvas.restore();
+
+            //canvas.rotate(90, ancho/2, alto/2);
             pincel1.setColor(Color.BLACK);
             pincel1.setStrokeWidth(2);
 
             pincel1.setStyle(Paint.Style.FILL);
             pincel1.setTextSize(20);
             canvas.drawText("Límites: " + limTxtY.toShortString(), 0, alto - 10, pincel1);
-            canvas.drawText("Nuevos valores ancho: " + anchoRot
-                             + " alto: " + altoRot, 0, alto - 30, pincel1);
+            canvas.drawText("Valores CentroX: " + centroX
+                             + " CentroY: " + centroY, 0, alto - 30, pincel1);
 
-           */
-
+            /*
             double gradRad = 0;
             double senGrado = 0;
 
@@ -125,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 //Dibujado de puntos
                 canvas.drawPoint(coordX, coordY, pincel1);
             }
-
+*/
 
 
         }
