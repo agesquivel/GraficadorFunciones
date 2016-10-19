@@ -42,13 +42,27 @@ public class MainActivity extends AppCompatActivity {
 
             Paint pincel1 = new Paint();
 
+
+
             pincel1.setARGB(255, 0, 0, 0);
             pincel1.setStyle(Paint.Style.STROKE);
             canvas.drawPoint(ancho / 2, alto / 2, pincel1);
             canvas.drawRect(0, 0, ancho-1, alto-1, pincel1);
 
+            canvas.save();
+            canvas.translate(100,100);
             pincel1.setARGB(255, 255, 0, 0);
             canvas.drawRect(ancho/2 - 100, alto/2 - 100, ancho/2+100, alto/2+100, pincel1);
+
+            pincel1.setColor(Color.MAGENTA);
+            //canvas.translate(100,100);
+
+
+            canvas.drawCircle(0, 0, 100, pincel1);
+            pincel1.setStrokeWidth(3);
+
+            canvas.restore();
+
 
             pincel1.setColor(Color.BLUE);
             pincel1.setStrokeWidth(3);
@@ -100,9 +114,10 @@ public class MainActivity extends AppCompatActivity {
             canvas.drawText("Eje Y", altoRot/2, anchoRot/2, pincel1);
             */
 
+            pincel1.setColor(Color.DKGRAY);
             canvas.rotate(-45, centroX, centroY);
             canvas.translate(centroX, centroY);
-            canvas.drawText("Texto 45º", 0, 0, pincel1);
+            canvas.drawText("Texto 90º", 0, 0, pincel1);
 
             canvas.restore();
 
@@ -115,25 +130,35 @@ public class MainActivity extends AppCompatActivity {
             canvas.drawText("Límites: " + limTxtY.toShortString(), 0, alto - 10, pincel1);
             canvas.drawText("Valores CentroX: " + centroX
                              + " CentroY: " + centroY, 0, alto - 30, pincel1);
-
-            /*
+            canvas.drawText("Dimensiones ancho=" + ancho + " alto="+alto, 0, alto-60, pincel1);
+            pincel1.setColor(Color.GREEN);
+            pincel1.setStrokeWidth(3);
+            //Dibujado de la gráfica de la función seno
             double gradRad = 0;
             double senGrado = 0;
 
             //Variables para transformación de coordenadas
-            int coordX, coordY;
+            int coordX, coordY,
+                    factorX, factorY,
+                    pixelPantallaX, pixelPantallaY,
+                    origPantallaX = 0, origPantallaY=alto/2;
 
-            for (int grado = 0; grado <= 360; grado++){
+            for (int grado = 0; grado <= 360; grado++){ //CoordX
                 gradRad = grado * 3.14/180;
-                senGrado = Math.sin(gradRad);
+                senGrado = Math.sin(gradRad);   //CoordY
 
                 //Cálculos de coordenadas
+                factorX = 1;
+                pixelPantallaX = factorX * grado;
 
+                factorY = 100;
+                pixelPantallaY = (int) (factorY * senGrado);
 
+                coordX = origPantallaX + pixelPantallaX;
+                coordY = origPantallaY - pixelPantallaY;
                 //Dibujado de puntos
                 canvas.drawPoint(coordX, coordY, pincel1);
             }
-*/
 
 
         }
