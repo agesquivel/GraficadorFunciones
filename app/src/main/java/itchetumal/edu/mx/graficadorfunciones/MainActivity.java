@@ -4,10 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -96,14 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
             canvas.drawText("Origen canvas girado", centroX, centroY, pincel1);
 
-            int anchoRot = canvas.getHeight();
-            int altoRot = canvas.getWidth();
-
-            /*canvas.drawText("Origen canvas rotado", anchoRot, altoRot, pincel1);
-
-            canvas.drawText("Eje Y", altoRot/2, anchoRot/2, pincel1);
-            */
-
             pincel1.setColor(Color.DKGRAY);
             canvas.rotate(-45, centroX, centroY);
             canvas.translate(centroX, centroY);
@@ -130,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             int coordX, coordY,
                     factorX, factorY,
                     pixelPantallaX, pixelPantallaY,
-                    origPantallaX = 150, origPantallaY=200; //Reubicar el origen (0,0)
+                    origPantallaX = 100, origPantallaY=250; //Reubicar el origen (0,0)
 
             //Dibujar eje de la abcisa y eje de la ordenada (eje X y eje Y)
 
