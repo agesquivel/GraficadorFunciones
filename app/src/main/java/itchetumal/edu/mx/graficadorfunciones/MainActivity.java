@@ -63,16 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
             canvas.restore();
 
-
-            pincel1.setColor(Color.BLUE);
-            pincel1.setStrokeWidth(3);
-
-            //dibujar linea de eje X
-            canvas.drawLine(0, alto/2, ancho - 1, alto/2, pincel1);
-
-            //dibujar linea de eje XY
-            canvas.drawLine(ancho/2, 0, ancho/2, alto-1, pincel1);
-
             //Dibujar texto
             pincel1.setARGB(255, 100, 100, 0);
             pincel1.setTextSize(30);
@@ -131,8 +121,7 @@ public class MainActivity extends AppCompatActivity {
             canvas.drawText("Valores CentroX: " + centroX
                              + " CentroY: " + centroY, 0, alto - 30, pincel1);
             canvas.drawText("Dimensiones ancho=" + ancho + " alto="+alto, 0, alto-60, pincel1);
-            pincel1.setColor(Color.GREEN);
-            pincel1.setStrokeWidth(3);
+
             //Dibujado de la gráfica de la función seno
             double gradRad = 0;
             double senGrado = 0;
@@ -141,7 +130,21 @@ public class MainActivity extends AppCompatActivity {
             int coordX, coordY,
                     factorX, factorY,
                     pixelPantallaX, pixelPantallaY,
-                    origPantallaX = 0, origPantallaY=alto/2;
+                    origPantallaX = 150, origPantallaY=200; //Reubicar el origen (0,0)
+
+            //Dibujar eje de la abcisa y eje de la ordenada (eje X y eje Y)
+
+            pincel1.setColor(Color.BLUE);
+            pincel1.setStrokeWidth(3);
+
+            //dibujar linea de eje X
+            canvas.drawLine(0, origPantallaY, ancho, origPantallaY, pincel1);
+
+            //dibujar linea de eje XY
+            canvas.drawLine(origPantallaX, 0, origPantallaX, alto, pincel1);
+
+            pincel1.setColor(Color.GREEN);
+            pincel1.setStrokeWidth(3);
 
             for (int grado = 0; grado <= 360; grado++){ //CoordX
                 gradRad = grado * 3.14/180;
